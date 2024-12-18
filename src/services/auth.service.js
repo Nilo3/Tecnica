@@ -12,6 +12,7 @@ export const createUser = async (req, res) => {
         user.password = bcryptjs.hashSync(password, salt);
 
         await user.save();
+
         res.status(STATUS_CODES.CREATED).json({
             ok: true,
             msg: MESSAGES.USER_CREATED,
@@ -83,11 +84,13 @@ export const regenerateJWT = async (req, res) => {
         token,
         user: userAuth
        });
+
     } catch (error) {
         res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).json({
             ok: false,
             msg: MESSAGES.ERROR_REGENERATING_TOKEN,
             error: error.message
         });
+
     }
 }
