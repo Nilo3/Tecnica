@@ -53,6 +53,7 @@
     "paths": {
         "/api/auth/create": {
             "post": {
+                "tags": ["Auth"],
                 "summary": "Crear/Registrar un usuario",
                 "description": "Crear/Registrar un usuario",
                 "requestBody": {
@@ -63,34 +64,12 @@
                         }
                     }
                 },
-                "responses": {
-                    "201": {
-                        "description": "Indica que el usuario se ha creado correctamente",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "example": {
-                                        "user": {
-                                            "name": "John Doe",
-                                            "email": "john.doe@example.com",
-                                            "age": 25,
-                                            "password": "Pruebas123@",
-                                            "id": "1234567890"
-                                        },
-                                        "token": "acces-token",
-                                        "ok": true,
-                                        "message": "Usuario creado correctamente"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                "responses": {}
             }
         },
         "/api/auth/login": {
            "post": {
+                "tags": ["Auth"],
                 "summary": "Iniciar sesión",
                 "description": "Iniciar sesión",
                 "requestBody": {
@@ -101,46 +80,12 @@
                         }
                     }
                 },
-                "responses": {
-                    "200": {
-                        "description": "Sesión iniciada.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "example": {
-                                        "user": {
-                                            "username": "georffrey",
-                                            "name": "Georffrey",
-                                            "id": "66cbfce4b907ffcfcaba3e7b"
-                                        },
-                                        "token": "access-token",
-                                        "ok": true,
-                                        "msg": "Ha iniciado sesión correctamente."
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Accesos denegado.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "example": {
-                                        "ok": false,
-                                        "msg": "Credenciales no válidas."
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                "responses": {}
             }
         },
         "/api/users/get-all-users": {
             "get": {
+                "tags": ["Users"],
                 "summary": "Obtener todos los usuarios",
                 "description": "Obtener todos los usuarios",
                 "parameters": [
@@ -152,26 +97,12 @@
                         "schema": { "type": "number" }
                     }
                 ],
-                "responses": {
-                    "200": {
-                        "description": "Usuarios obtenidos correctamente",
-                        "content": {
-                            "application/json": {
-                                "schema": { "$ref": "#/components/schemas/User" }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "No se encontraron usuarios",
-                        "content": {
-                            "application/json": { "example": { "ok": false, "msg": "No se encontraron usuarios" } }
-                        }
-                    }
-                }
+                "responses": {}
             }
         },
         "/api/users/get-user-by-id/{id}": {
             "get": {
+                "tags": ["Users"],
                 "summary": "Obtener un usuario por su ID",
                 "description": "Obtener un usuario por su ID",
                 "parameters": [
@@ -183,20 +114,12 @@
                         "schema": { "type": "string" }
                     }
                 ],
-                "responses": {
-                    "200": {
-                        "description": "Usuario obtenido correctamente",
-                        "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } }
-                    },
-                    "404": {
-                        "description": "No se encontró el usuario",
-                        "content": { "application/json": { "example": { "ok": false, "msg": "No se encontró el usuario" } } }
-                    }
-                }
+                "responses": {}
             }
         },
         "/api/users/update-user/{id}": {
             "put": {
+                "tags": ["Users"],
                 "summary": "Actualizar un usuario",
                 "description": "Actualizar un usuario",
                 "parameters": [
@@ -212,14 +135,12 @@
                     "required": true,
                     "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } }
                 },
-                "responses": {
-                    "200": { "description": "Usuario actualizado correctamente", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } } },
-                    "404": { "description": "No se encontró el usuario", "content": { "application/json": { "example": { "ok": false, "msg": "No se encontró el usuario" } } } }
-                }
+                "responses": {}
             }
         },
         "/api/users/deactivate-user/{id}": {
             "put": {
+                "tags": ["Users"],
                 "summary": "Desactivar un usuario",
                 "description": "Desactivar un usuario",
                 "parameters": [
@@ -231,13 +152,12 @@
                         "schema": { "type": "string" }
                     }
                 ],
-                "responses": {
-                    "200": { "description": "Usuario desactivado correctamente", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } } }
-                }
+                "responses": {}
             }
         },
         "/api/users/activate-user/{id}": {
             "put": {
+                "tags": ["Users"],
                 "summary": "Activar un usuario",
                 "description": "Activar un usuario",
                 "parameters": [
@@ -249,11 +169,12 @@
                         "schema": { "type": "string" }
                     }
                 ],
-                "responses": { "200": { "description": "Usuario activado correctamente", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } } } }
+                "responses": {}
             }
         },
         "/api/users/delete-user/{id}": {
             "delete": {
+                "tags": ["Users"],
                 "summary": "Eliminar un usuario",
                 "description": "Eliminar un usuario",
                 "parameters": [
@@ -265,7 +186,7 @@
                         "schema": { "type": "string" }
                     }
                 ],
-                "responses": { "200": { "description": "Usuario eliminado correctamente", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/User" } } } } }
+                "responses": {}
             }
         }
     },
