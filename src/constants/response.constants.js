@@ -24,5 +24,8 @@ export const MESSAGES = {
     ERROR_UPDATING_USER: "Error al actualizar el usuario",
     ERROR_DEACTIVATING_USER: "Error al desactivar el usuario",
     ERROR_ACTIVATING_USER: "Error al activar el usuario",
-    ERROR_DELETING_USER: "Error al eliminar el usuario"
+    ERROR_DELETING_USER: "Error al eliminar el usuario",
+    ERROR_CREATING_USER: "Error al crear el usuario",
+    ERROR_LOGIN: "Error al iniciar sesión",
+    ERROR_REGENERATING_TOKEN: "Error al regenerar el token"
 };

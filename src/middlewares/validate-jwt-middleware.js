@@ -32,7 +32,8 @@ export const validateJWT = async (req, res, next) => {
   } catch (error) {
     res.status(401).json({
       ok: false,
-      msg: 'Acceso denegado'
+      msg: 'Acceso denegado',
+      error: error.message
     });
   }
 }
