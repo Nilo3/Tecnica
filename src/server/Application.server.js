@@ -1,36 +1,36 @@
-import express from "express";
-import cors from "cors";
-import authRoutes from "../controllers/auth.controller.js";
-import userRoutes from "../controllers/user.controller.js";
-import swaggerUI from "swagger-ui-express";
-import { swaggerDocumentationSpec } from "../documentation/swagger.documentation.js";
+import express from 'express'
+import cors from 'cors'
+import authRoutes from '../controllers/auth.controller.js'
+import userRoutes from '../controllers/user.controller.js'
+import swaggerUI from 'swagger-ui-express'
+import { swaggerDocumentationSpec } from '../documentation/swagger.documentation.js'
 
 export class Application {
-  constructor() {
-    this.app = express();
+  constructor () {
+    this.app = express()
     this.paths = {
-      auth: "/api/auth",
-      users: "/api/users"
+      auth: '/api/auth',
+      users: '/api/users'
     }
-    this.middlewares();
-    this.defineRoutes();
+    this.middlewares()
+    this.defineRoutes()
   }
 
-  middlewares() {
-    this.app.use(cors());
-    this.app.use(express.json());
-    this.app.use(express.static("src/public"));
-    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocumentationSpec));
+  middlewares () {
+    this.app.use(cors())
+    this.app.use(express.json())
+    this.app.use(express.static('src/public'))
+    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocumentationSpec))
   }
 
-  defineRoutes() {
-    this.app.use(this.paths.auth, authRoutes);
-    this.app.use(this.paths.users, userRoutes);
+  defineRoutes () {
+    this.app.use(this.paths.auth, authRoutes)
+    this.app.use(this.paths.users, userRoutes)
   }
 
-  start() {
+  start () {
     this.app.listen(process.env.PORT, () => {
-      console.log(`Server is running on port ${process.env.PORT}`);
-    });
+      console.log(`Server is running on port ${process.env.PORT}`)
+    })
   }
 }
