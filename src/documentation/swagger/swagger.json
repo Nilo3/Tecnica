@@ -86,8 +86,8 @@
         "/api/users/get-all-users": {
             "get": {
                 "tags": ["Users"],
-                "summary": "Obtener todos los usuarios",
-                "description": "Obtener todos los usuarios",
+                "summary": "Obtener todos los usuarios activos",
+                "description": "Obtener todos los usuarios activos",
                 "parameters": [
                     {
                         "name": "page",
