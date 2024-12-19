@@ -6,7 +6,7 @@ import { check, param } from 'express-validator'
 
 const router = Router()
 
-router.get('/get-all-users', validateJWT, getAllUsers)
+router.get('/get-all-users', getAllUsers)
 
 router.get('/get-user-by-id/:id', [
   validateJWT,
@@ -20,6 +20,9 @@ router.put('/update-user/:id', [
   check('name', 'El nombre debe ser un string.').optional().isString(),
   check('age', 'La edad debe ser un número entero positivo.').optional().isInt({ gt: 0 }),
   check('email', 'Debe ser un email válido.').optional().isEmail(),
+  check('password', 'La contraseña es requerida y debe tener al menos una mayúscula, dos dígitos, un carácter especial y 8 caracteres')
+  .notEmpty()
+  .matches(/^(?=.*[A-Z])(?=.*\d.*\d)(?=.*[!@#$%^&*])(?=.{8,})/),
   validateFields
 ], updateUser)
 

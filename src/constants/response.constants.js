@@ -26,6 +26,6 @@ export const MESSAGES = {
   ERROR_ACTIVATING_USER: 'Error al activar el usuario',
   ERROR_DELETING_USER: 'Error al eliminar el usuario',
   ERROR_CREATING_USER: 'Error al crear el usuario',
-  ERROR_LOGIN: 'Error al iniciar sesión',
+  ERROR_LOGIN: 'Error al iniciar sesión - Credenciales incorrectas',
   ERROR_REGENERATING_TOKEN: 'Error al regenerar el token'
 }

@@ -13,7 +13,9 @@ router.post('/create', [
   validateJWT,
   check('name', 'El nombre es requerido y debe ser un string').notEmpty().isString(),
   check('email', 'El email es requerido y debe ser un email válido').notEmpty().isEmail(),
-  check('password', 'La contraseña es requerida').notEmpty(),
+  check('password', 'La contraseña es requerida y debe tener al menos una mayúscula, dos dígitos, un carácter especial y 8 caracteres')
+  .notEmpty()
+  .matches(/^(?=.*[A-Z])(?=.*\d.*\d)(?=.*[!@#$%^&*])(?=.{8,})/),  
   check('age', 'La edad es requerida y debe ser un número entero no negativo').notEmpty().isInt({ min: 0 }),
   check('email').custom(validateEmail),
   validateFields

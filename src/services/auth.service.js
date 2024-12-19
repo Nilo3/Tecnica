@@ -67,7 +67,6 @@ export const login = async (req, res) => {
     res.status(STATUS_CODES.INTERNAL_SERVER_ERROR).json({
       ok: false,
       msg: MESSAGES.ERROR_LOGIN,
-      error: error.message
     })
   }
 }
